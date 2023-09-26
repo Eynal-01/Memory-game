@@ -57,9 +57,15 @@ function timeGenerator() {
   timeValue.innerHTML = `<span>Time : </span>${minutesValue}:${secondsValue}`;
 };
 
+// function showCards() {
+//   for (let i = 0; i < size * size; i++) {
+//     card.classList.add("flipped");
+//   }
+// }
+
 function movesCounter() {
   movesCount += 1;
-  moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+  moves.innerHTML = `<span>Moves : </span>${movesCount}`;
   if (movesCount == 5) {
     result.innerHTML = `<h2>You Loser</h2>
             <h4>Moves : ${movesCount}</h4>
@@ -73,7 +79,7 @@ function generateRandom(size = 4) {
   let tempArray = [...items];
   let cardValues = [];
 
-  size = ((size * size) - 1) / 2;
+  size = (size * size) / 2;
 
   for (let i = 0; i < size; i++) {
     const randomIndex = Math.floor(Math.random() * tempArray.length);
@@ -84,17 +90,12 @@ function generateRandom(size = 4) {
 };
 
 function matrixGenerator(cardValues, size = 4) {
+  // showCards();
   gameContainer.innerHTML = "";
   cardValues = [...cardValues, ...cardValues];
 
   cardValues.sort(() => Math.random() - 0.5);
   for (let i = 0; i < size * size; i++) {
-    /*
-        Create Cards
-        before => front side (contains question mark)
-        after => back side (contains actual image);
-        data-card-values is a custom attribute which stores the names of the cards to match later
-      */
     gameContainer.innerHTML += `
      <section class="card-container" data-card-value="${cardValues[i].name}">
         <section class="card-before">?</section>
@@ -153,7 +154,7 @@ startButton.addEventListener("click", () => {
   stopButton.classList.remove("hide");
   startButton.classList.add("hide");
   interval = setInterval(timeGenerator, 1000);
-  moves.innerHTML = `<span>Moves :</span> ${movesCount}`;
+  moves.innerHTML = `<span>Moves : </span> ${movesCount}`;
   initializer();
 });
 

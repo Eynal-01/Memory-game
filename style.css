@@ -50,6 +50,11 @@ body {
   gap: 0.6em;
 }
 
+.game-container section img {
+  width: 70px;
+  height: 70px;
+}
+
 .stats-container {
   text-align: right;
   margin-bottom: 1.2em;
